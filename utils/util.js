@@ -14,6 +14,19 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-module.exports = {
-  formatTime: formatTime
+// const toQueryString = (obj) => {
+//   return '?' + Object.keys(obj).map(i => `${i}=${obj[i]}`).join('&')
+// }
+
+const toQueryString = (params) =>{
+  return '?' + Object.keys(params).map(i => `${i}=${params[i]}`).join('&')
+
 }
+
+module.exports = {
+  formatTime: formatTime,
+  toQueryString
+}
+
+
+

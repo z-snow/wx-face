@@ -1,9 +1,36 @@
 <!--pages/home/home.wxml-->
-<camera class="camera1" style="height:{{windowHeight}}px; width:100%;">
-  <view class="box">
-    <image src="/images/icon/reverse.png"></image>
-    <image src="/images/icon/camera.png"></image>
-    <image src="/images/icon/album.png"></image>
-  </view>
+<camera wx:if="{{isShowPic === false}}" class="camera1" style="height:{{windowHeight}}px; width:100%;"
+device-position="{{positon}}">
+  <cover-view class="box">
+  <!-- 切换摄像头 -->
+    <cover-image src="/images/icon/reverse.png" bindtap="reverseCamera"></cover-image>
+   <!-- 拍照 -->
+    <cover-image src="/images/icon/camera.png" bindtap="takephoto"></cover-image>
+  <!-- 选照片 -->
+    <cover-image src="/images/icon/album.png" bindtap="choosePhoto" ></cover-image>
+  </cover-view>
+
+
 
 </camera>
+<view wx:else class="container">
+  <image src="{{src}}" mode='aspectFill'  style="width:100%; height:{{windowHeight}}px"></image>
+  <button class="choose" bindtap="rechoose">重新选择</button>
+
+  <view class="face-info-box" wx:if="{{isShowBox}}">
+    <view class="face-info-item">
+        <text>年龄：{{faceInfo.age}}岁</text>
+        <text>性别：{{map.gender[faceInfo.gender.type]}}</text>
+    </view>
+     <view class="face-info-item">
+        <text>颜值：{{faceInfo.beauty}}分</text>
+        <text>表情：{{map.expression[faceInfo.expression.type]}}</text>
+    </view>
+     <view class="face-info-item">
+        <text>眼镜：{{map.glasses[faceInfo.glasses.type]}}</text>
+        <text>情绪：{{map.emotion[faceInfo.emotion.type]}}</text>
+    </view>
+  
+  </view>
+</view>
+
