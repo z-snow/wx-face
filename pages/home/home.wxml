@@ -1,0 +1,9 @@
+<!--pages/home/home.wxml-->
+<camera class="camera1" style="height:{{windowHeight}}px; width:100%;">
+  <view class="box">
+    <image src="/images/icon/reverse.png"></image>
+    <image src="/images/icon/camera.png"></image>
+    <image src="/images/icon/album.png"></image>
+  </view>
+
+</camera>
